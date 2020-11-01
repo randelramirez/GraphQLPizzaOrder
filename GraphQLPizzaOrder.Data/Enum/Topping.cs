@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraphQLPizzaOrder.Data.Eum
+namespace GraphQLPizzaOrder.Data.Enum
 {
     [Flags]
     public enum Toppings

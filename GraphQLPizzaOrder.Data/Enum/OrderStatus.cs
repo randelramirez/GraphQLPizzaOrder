@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GraphQLPizzaOrder.Data.Eum
+namespace GraphQLPizzaOrder.Data.Enum
 {
     public enum OrderStatus
     {
@@ -10,6 +10,6 @@ namespace GraphQLPizzaOrder.Data.Eum
         InKitchen = 2,
         OnTheWay = 3,
         Delivered = 4,
-        Canceled = 5,
+        Cancelled = 5,
     }
 }

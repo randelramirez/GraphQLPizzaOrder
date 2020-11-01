@@ -1,4 +1,5 @@
-﻿using GraphQLPizzaOrder.Data.Eum;
+﻿
+using GraphQLPizzaOrder.Data.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,7 +31,7 @@ namespace GraphQLPizzaOrder.Data.Entities
         public int Size { get; set; }
 
         [Required]
-        public int OrderDetailsId { get; set; }
+        public int OrderDetailId { get; set; }
 
         [ForeignKey("OrderDetailsId")]
         public OrderDetail OrderDetail { get; set; }
@@ -50,7 +51,7 @@ namespace GraphQLPizzaOrder.Data.Entities
             Toppings = toppings;
             Price = price;
             Size = size;
-            OrderDetailsId = orderDetailsId;
+            OrderDetailId = orderDetailsId;
         }
 
         #endregion

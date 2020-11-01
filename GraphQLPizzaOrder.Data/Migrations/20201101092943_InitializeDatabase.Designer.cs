@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GraphQLPizzaOrder.Data.Migrations
 {
     [DbContext(typeof(PizzaOrderContext))]
-    [Migration("20201101071740_InitializeDatabase")]
+    [Migration("20201101092943_InitializeDatabase")]
     partial class InitializeDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

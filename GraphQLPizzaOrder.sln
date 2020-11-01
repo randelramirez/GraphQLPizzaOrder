@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLPizzaOrder.Data", "GraphQLPizzaOrder.Data\GraphQLPizzaOrder.Data.csproj", "{686E39F0-7F89-4946-9043-604D47D0BF4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQLPizzaOrder.Data", "GraphQLPizzaOrder.Data\GraphQLPizzaOrder.Data.csproj", "{686E39F0-7F89-4946-9043-604D47D0BF4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLPizzaOrder.API", "GraphQLPizzaOrder.API\GraphQLPizzaOrder.API.csproj", "{CFD32B8C-0207-4CB5-8C64-9E1CB438AA13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQLPizzaOrder.API", "GraphQLPizzaOrder.API\GraphQLPizzaOrder.API.csproj", "{CFD32B8C-0207-4CB5-8C64-9E1CB438AA13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLPizzaOrder.GraphQLModels", "GraphQLPizzaOrder.GraphQLModels\GraphQLPizzaOrder.GraphQLModels.csproj", "{1E6E08B6-640A-4523-8FB6-5AFC90C779DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLPizzaOrder.Core", "GraphQLPizzaOrder.Core\GraphQLPizzaOrder.Core.csproj", "{B5E002D1-4963-45ED-800E-593FFAA292AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{CFD32B8C-0207-4CB5-8C64-9E1CB438AA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFD32B8C-0207-4CB5-8C64-9E1CB438AA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFD32B8C-0207-4CB5-8C64-9E1CB438AA13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E6E08B6-640A-4523-8FB6-5AFC90C779DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E6E08B6-640A-4523-8FB6-5AFC90C779DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E6E08B6-640A-4523-8FB6-5AFC90C779DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E6E08B6-640A-4523-8FB6-5AFC90C779DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E002D1-4963-45ED-800E-593FFAA292AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E002D1-4963-45ED-800E-593FFAA292AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E002D1-4963-45ED-800E-593FFAA292AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E002D1-4963-45ED-800E-593FFAA292AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

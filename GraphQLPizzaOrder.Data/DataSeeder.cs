@@ -1,5 +1,5 @@
 ﻿using GraphQLPizzaOrder.Data.Entities;
-using GraphQLPizzaOrder.Data.Eum;
+using GraphQLPizzaOrder.Data.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;

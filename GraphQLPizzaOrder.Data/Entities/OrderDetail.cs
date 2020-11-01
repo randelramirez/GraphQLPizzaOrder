@@ -1,4 +1,4 @@
-﻿using GraphQLPizzaOrder.Data.Eum;
+﻿using GraphQLPizzaOrder.Data.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

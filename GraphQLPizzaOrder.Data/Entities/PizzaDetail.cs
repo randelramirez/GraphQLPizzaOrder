@@ -33,7 +33,7 @@ namespace GraphQLPizzaOrder.Data.Entities
         [Required]
         public int OrderDetailId { get; set; }
 
-        [ForeignKey("OrderDetailsId")]
+        [ForeignKey("OrderDetailId")]
         public OrderDetail OrderDetail { get; set; }
 
         #endregion

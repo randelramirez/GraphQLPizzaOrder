@@ -67,7 +67,7 @@ namespace GraphQLPizzaOrder.Data.Migrations
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 
-                    b.Property<int>("OrderDetailsId")
+                    b.Property<int>("OrderDetailId")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
@@ -82,7 +82,7 @@ namespace GraphQLPizzaOrder.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderDetailsId");
+                    b.HasIndex("OrderDetailId");
 
                     b.ToTable("PizzaDetails");
                 });
@@ -287,7 +287,7 @@ namespace GraphQLPizzaOrder.Data.Migrations
                 {
                     b.HasOne("GraphQLPizzaOrder.Data.Entities.OrderDetail", "OrderDetail")
                         .WithMany("PizzaDetails")
-                        .HasForeignKey("OrderDetailsId")
+                        .HasForeignKey("OrderDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

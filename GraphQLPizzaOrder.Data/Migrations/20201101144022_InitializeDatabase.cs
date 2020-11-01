@@ -180,14 +180,14 @@ namespace GraphQLPizzaOrder.Data.Migrations
                     Toppings = table.Column<int>(maxLength: 200, nullable: false),
                     Price = table.Column<double>(nullable: false),
                     Size = table.Column<int>(nullable: false),
-                    OrderDetailsId = table.Column<int>(nullable: false)
+                    OrderDetailId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PizzaDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PizzaDetails_OrderDetails_OrderDetailsId",
-                        column: x => x.OrderDetailsId,
+                        name: "FK_PizzaDetails_OrderDetails_OrderDetailId",
+                        column: x => x.OrderDetailId,
                         principalTable: "OrderDetails",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -233,9 +233,9 @@ namespace GraphQLPizzaOrder.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PizzaDetails_OrderDetailsId",
+                name: "IX_PizzaDetails_OrderDetailId",
                 table: "PizzaDetails",
-                column: "OrderDetailsId");
+                column: "OrderDetailId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

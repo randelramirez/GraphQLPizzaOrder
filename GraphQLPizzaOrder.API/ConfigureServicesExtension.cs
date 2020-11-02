@@ -17,13 +17,13 @@ namespace GraphQLPizzaOrder.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
-            services.AddScoped<IPizzaDetailService, PizzaDetailService>();
-            services.AddScoped<IOrderDetailService, OrderDetailService>();
+            services.AddSingleton<IPizzaDetailService, PizzaDetailService>();
+            services.AddSingleton<IOrderDetailService, OrderDetailService>();
         }
 
         public static void AddGraphQLServices(this IServiceCollection services)
         {
-            services.AddScoped<IServiceProvider>(c => new FuncServiceProvider(type => c.GetRequiredService(type)));
+            services.AddSingleton<IServiceProvider>(c => new FuncServiceProvider(type => c.GetRequiredService(type)));
             services.AddGraphQL(options =>
             {
                 options.EnableMetrics = true;
@@ -40,14 +40,17 @@ namespace GraphQLPizzaOrder.API
 
         public static void AddGraphQLTypes(this IServiceCollection services)
         {
-            services.AddScoped<OrderDetailType>();
-            services.AddScoped<PizzaDetailType>();
+            services.AddSingleton<OrderStatusEnumType>();
+            services.AddSingleton<ToppingsEnumType>();
+            services.AddSingleton<OrderDetailType>();
+            services.AddSingleton<PizzaDetailType>();
 
-            services.AddScoped<OrderStatusEnumType>();
-            services.AddScoped<ToppingsEnumType>();
-
-            services.AddScoped<PizzaOrderQuery>();
+            services.AddSingleton<PizzaOrderQuery>();
             services.AddScoped<PizzaOrderSchema>();
+           
+          
+          
+          
         }
     }
 }

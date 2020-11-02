@@ -59,16 +59,14 @@ namespace GraphQLPizzaOrder.API
                    sql.MigrationsAssembly(migrationAssembly));
             }, ServiceLifetime.Singleton);
 
-            
-            // Workaround for multiple queries
-            services.AddScoped<IDocumentExecuter, EFDocumentExecuter>();
-            //services.AddSingleton<IDocumentWriter, DocumentWriter>();
 
+            // Workaround for multiple queries
+            services.AddSingleton<IDocumentExecuter, EFDocumentExecuter>();
+            //services.AddSingleton<IDocumentWriter, DocumentWriter>();
 
             services.AddCustomServices();
             services.AddGraphQLServices();
             services.AddGraphQLTypes();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,7 +93,6 @@ namespace GraphQLPizzaOrder.API
 
             app.UseGraphQL<PizzaOrderSchema>();
             app.UseGraphQLWebSockets<PizzaOrderSchema>();  // for GraphQL subscription
-
 
             app.UseGraphQLPlayground();
         }

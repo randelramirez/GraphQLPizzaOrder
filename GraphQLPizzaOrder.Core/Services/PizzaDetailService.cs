@@ -15,7 +15,7 @@ namespace GraphQLPizzaOrder.Core.Services
 
         //IEnumerable<PizzaDetail> GetAllPizzaDetailsForOrder(int orderId);
 
-        Task<IEnumerable<PizzaDetail>> GetAllPizzaDetailsForOrder(int orderId);
+        Task<IEnumerable<PizzaDetail>> GetAllPizzaDetailsForOrderAsync(int orderId);
     }
 
     public class PizzaDetailService : IPizzaDetailService
@@ -32,7 +32,7 @@ namespace GraphQLPizzaOrder.Core.Services
             return await this.context.PizzaDetails.FindAsync(pizzaDetailId);
         }
 
-        public async Task<IEnumerable<PizzaDetail>> GetAllPizzaDetailsForOrder(int orderId)
+        public async Task<IEnumerable<PizzaDetail>> GetAllPizzaDetailsForOrderAsync(int orderId)
         {
             return await this.context.PizzaDetails.Where(p => p.OrderDetailId == orderId).ToListAsync();
         }

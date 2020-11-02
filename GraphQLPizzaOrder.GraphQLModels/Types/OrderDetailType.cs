@@ -29,7 +29,7 @@ namespace GraphQLPizzaOrder.GraphQLModels.Types
 
             FieldAsync<ListGraphType<PizzaDetailType>>(
              name: "pizzaDetails",
-             resolve: async context => await this.pizzaDetailService.GetAllPizzaDetailsForOrder(context.Source.Id));
+             resolve: async context => await this.pizzaDetailService.GetAllPizzaDetailsForOrderAsync(context.Source.Id));
         
         }
     }

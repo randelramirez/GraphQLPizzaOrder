@@ -42,7 +42,6 @@ namespace GraphQLPizzaOrder.Data.Entities
 
         public PizzaDetail()
         {
-
         }
 
         public PizzaDetail(string name, Toppings toppings, double price, int size, int orderDetailsId)

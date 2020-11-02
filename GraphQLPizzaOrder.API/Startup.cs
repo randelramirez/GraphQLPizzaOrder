@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using GraphQL;
 using GraphQL.Server;
 using GraphQLPizzaOrder.Data;
 using GraphQLPizzaOrder.GraphQLModels.Schema;
@@ -58,6 +59,10 @@ namespace GraphQLPizzaOrder.API
                    sql.MigrationsAssembly(migrationAssembly));
             }, ServiceLifetime.Singleton);
 
+            
+            // Workaround for multiple queries
+            services.AddScoped<IDocumentExecuter, EFDocumentExecuter>();
+            //services.AddSingleton<IDocumentWriter, DocumentWriter>();
 
 
             services.AddCustomServices();

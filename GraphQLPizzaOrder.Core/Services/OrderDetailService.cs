@@ -14,6 +14,8 @@ namespace GraphQLPizzaOrder.Core.Services
     public interface IOrderDetailService
     {
         Task<IEnumerable<OrderDetail>> GetAllNewOrdersAsync();
+
+        Task<OrderDetail> GetOrderDetailAsync(int id);
     }
 
     public class OrderDetailService : IOrderDetailService
@@ -30,6 +32,11 @@ namespace GraphQLPizzaOrder.Core.Services
             return await this.context.OrderDetails
                 .Where(o => o.OrderStatus == Data.Enum.OrderStatus.Created)
                 .ToListAsync();
+        }
+
+        public async Task<OrderDetail> GetOrderDetailAsync(int orderId)
+        {
+            return await this.context.OrderDetails.FindAsync(orderId);
         }
     }
 }

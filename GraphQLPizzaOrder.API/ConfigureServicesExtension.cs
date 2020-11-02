@@ -17,8 +17,8 @@ namespace GraphQLPizzaOrder.API
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
-            services.AddTransient<IPizzaDetailService, PizzaDetailService>();
-            services.AddTransient<IOrderDetailService, OrderDetailService>();
+            services.AddScoped<IPizzaDetailService, PizzaDetailService>();
+            services.AddScoped<IOrderDetailService, OrderDetailService>();
         }
 
         public static void AddGraphQLServices(this IServiceCollection services)
@@ -35,19 +35,19 @@ namespace GraphQLPizzaOrder.API
             .AddSystemTextJson(deserializerSettings => { }, serializerSettings => { })
             .AddWebSockets()  // for GraphQL subscription
             .AddDataLoader()
-            .AddGraphTypes(typeof(PizzaOrderSchema));
+            .AddGraphTypes(typeof(PizzaOrderSchema),ServiceLifetime.Scoped);
         }
 
         public static void AddGraphQLTypes(this IServiceCollection services)
         {
-            services.AddSingleton<OrderDetailType>();
-            services.AddSingleton<PizzaDetailType>();
+            services.AddScoped<OrderDetailType>();
+            services.AddScoped<PizzaDetailType>();
 
-            services.AddSingleton<OrderStatusEnumType>();
-            services.AddSingleton<ToppingsEnumType>();
+            services.AddScoped<OrderStatusEnumType>();
+            services.AddScoped<ToppingsEnumType>();
 
-            services.AddSingleton<PizzaOrderQuery>();
-            services.AddSingleton<PizzaOrderSchema>();
+            services.AddScoped<PizzaOrderQuery>();
+            services.AddScoped<PizzaOrderSchema>();
         }
     }
 }

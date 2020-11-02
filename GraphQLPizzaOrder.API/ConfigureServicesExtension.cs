@@ -2,6 +2,8 @@
 using GraphQL.Server;
 using GraphQLPizzaOrder.Core.Services;
 using GraphQLPizzaOrder.GraphQLModels.Enums;
+using GraphQLPizzaOrder.GraphQLModels.InputTypes;
+using GraphQLPizzaOrder.GraphQLModels.Mutations;
 using GraphQLPizzaOrder.GraphQLModels.Queries;
 using GraphQLPizzaOrder.GraphQLModels.Schema;
 using GraphQLPizzaOrder.GraphQLModels.Types;
@@ -42,9 +44,12 @@ namespace GraphQLPizzaOrder.API
         {
             services.AddSingleton<OrderStatusEnumType>();
             services.AddSingleton<ToppingsEnumType>();
+            services.AddSingleton<OrderDetailInputType>();
+            services.AddSingleton<PizzaDetailInputType>();
             services.AddSingleton<OrderDetailType>();
             services.AddSingleton<PizzaDetailType>();
             services.AddSingleton<PizzaOrderQuery>();
+            services.AddSingleton<PizzaOrderMutation>();
             services.AddSingleton<PizzaOrderSchema>();
         }
     }

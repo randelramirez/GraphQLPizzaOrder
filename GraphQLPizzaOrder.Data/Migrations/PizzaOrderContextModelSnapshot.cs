@@ -32,7 +32,6 @@ namespace GraphQLPizzaOrder.Data.Migrations
                         .HasMaxLength(40);
 
                     b.Property<string>("AddressLine2")
-                        .IsRequired()
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 

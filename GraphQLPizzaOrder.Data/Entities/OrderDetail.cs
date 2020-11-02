@@ -19,7 +19,7 @@ namespace GraphQLPizzaOrder.Data.Entities
         [StringLength(40)]
         public string AddressLine1 { get; set; }
 
-        [Required]
+      
         [StringLength(40)]
         public string AddressLine2 { get; set; }
 

@@ -44,13 +44,13 @@ namespace GraphQLPizzaOrder.Data.Entities
         {
         }
 
-        public PizzaDetail(string name, Toppings toppings, double price, int size, int orderDetailsId)
+        public PizzaDetail(string name, Toppings toppings, double price, int size, int orderDetailId)
         {
             Name = name;
             Toppings = toppings;
             Price = price;
             Size = size;
-            OrderDetailId = orderDetailsId;
+            OrderDetailId = orderDetailId;
         }
 
         #endregion

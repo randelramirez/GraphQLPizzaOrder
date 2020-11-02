@@ -53,7 +53,7 @@ namespace GraphQLPizzaOrder.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AddressLine1 = table.Column<string>(maxLength: 40, nullable: false),
-                    AddressLine2 = table.Column<string>(maxLength: 40, nullable: false),
+                    AddressLine2 = table.Column<string>(maxLength: 40, nullable: true),
                     MobileNo = table.Column<string>(maxLength: 10, nullable: false),
                     Amount = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GraphQLPizzaOrder.Data.Migrations
 {
     [DbContext(typeof(PizzaOrderContext))]
-    [Migration("20201101144022_InitializeDatabase")]
+    [Migration("20201102111219_InitializeDatabase")]
     partial class InitializeDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,6 @@ namespace GraphQLPizzaOrder.Data.Migrations
                         .HasMaxLength(40);
 
                     b.Property<string>("AddressLine2")
-                        .IsRequired()
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 

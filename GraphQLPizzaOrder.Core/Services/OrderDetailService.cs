@@ -16,6 +16,8 @@ namespace GraphQLPizzaOrder.Core.Services
         Task<IEnumerable<OrderDetail>> GetAllNewOrdersAsync();
 
         Task<OrderDetail> GetOrderDetailAsync(int id);
+
+        Task<OrderDetail> CreateAsync(OrderDetail orderDetail);
     }
 
     public class OrderDetailService : IOrderDetailService
@@ -37,6 +39,15 @@ namespace GraphQLPizzaOrder.Core.Services
         public async Task<OrderDetail> GetOrderDetailAsync(int orderId)
         {
             return await this.context.OrderDetails.FindAsync(orderId);
+        }
+
+        public async Task<OrderDetail> CreateAsync(OrderDetail orderDetail)
+        {
+            var newOrderDetail = await this.context.AddAsync(orderDetail);
+            await this.context.SaveChangesAsync();
+            //return orderDetail;
+            return newOrderDetail.Entity;
+
         }
     }
 }

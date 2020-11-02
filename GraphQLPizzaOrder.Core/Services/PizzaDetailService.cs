@@ -13,9 +13,9 @@ namespace GraphQLPizzaOrder.Core.Services
     {
         Task<PizzaDetail> GetPizzaDetailAsync(int pizzaDetailId);
 
-        //IEnumerable<PizzaDetail> GetAllPizzaDetailsForOrder(int orderId);
-
         Task<IEnumerable<PizzaDetail>> GetAllPizzaDetailsForOrderAsync(int orderId);
+
+        Task<IEnumerable<PizzaDetail>> CreateBulkAsync(IEnumerable<PizzaDetail> pizzaDetails, int orderId);
     }
 
     public class PizzaDetailService : IPizzaDetailService
@@ -37,9 +37,11 @@ namespace GraphQLPizzaOrder.Core.Services
             return await this.context.PizzaDetails.Where(p => p.OrderDetailId == orderId).ToListAsync();
         }
 
-        //public IEnumerable<PizzaDetail> GetAllPizzaDetailsForOrder(int orderId)
-        //{
-        //    return this.context.PizzaDetails.Include(o => o.OrderDetail).Where(p => p.OrderDetailId == orderId).ToList();
-        //}
+        public async Task<IEnumerable<PizzaDetail>> CreateBulkAsync(IEnumerable<PizzaDetail> pizzaDetails, int orderId)
+        {
+            await this.context.PizzaDetails.AddRangeAsync(pizzaDetails);
+            await this.context.SaveChangesAsync();
+            return this.context.PizzaDetails.Where(p => p.OrderDetailId == orderId);
+        }
     }
 }

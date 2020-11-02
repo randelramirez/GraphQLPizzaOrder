@@ -35,7 +35,7 @@ namespace GraphQLPizzaOrder.API
             .AddSystemTextJson(deserializerSettings => { }, serializerSettings => { })
             .AddWebSockets()  // for GraphQL subscription
             .AddDataLoader()
-            .AddGraphTypes(typeof(PizzaOrderSchema),ServiceLifetime.Scoped);
+            .AddGraphTypes(typeof(PizzaOrderSchema),ServiceLifetime.Singleton);
         }
 
         public static void AddGraphQLTypes(this IServiceCollection services)
@@ -44,13 +44,8 @@ namespace GraphQLPizzaOrder.API
             services.AddSingleton<ToppingsEnumType>();
             services.AddSingleton<OrderDetailType>();
             services.AddSingleton<PizzaDetailType>();
-
             services.AddSingleton<PizzaOrderQuery>();
-            services.AddScoped<PizzaOrderSchema>();
-           
-          
-          
-          
+            services.AddSingleton<PizzaOrderSchema>();
         }
     }
 }

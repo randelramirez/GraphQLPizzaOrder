@@ -59,10 +59,8 @@ namespace GraphQLPizzaOrder.API
                    sql.MigrationsAssembly(migrationAssembly));
             }, ServiceLifetime.Singleton);
 
-
-            // Workaround for multiple queries
-            services.AddSingleton<IDocumentExecuter, EFDocumentExecuter>();
-            //services.AddSingleton<IDocumentWriter, DocumentWriter>();
+            services.AddSingleton<IDocumentExecuter, EFDocumentExecuter>(); // Workaround for parallel queries in EF
+            services.AddSingleton<IDocumentWriter, GraphQL.SystemTextJson.DocumentWriter>();
 
             services.AddCustomServices();
             services.AddGraphQLServices();

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using GraphQLPizzaOrder.Data.Entities;
+using GraphQLPizzaOrder.Data.Enum;
 
 namespace GraphQLPizzaOrder.Core.Services
 {
@@ -18,6 +19,8 @@ namespace GraphQLPizzaOrder.Core.Services
         Task<OrderDetail> GetOrderDetailAsync(int id);
 
         Task<OrderDetail> CreateAsync(OrderDetail orderDetail);
+
+        Task<OrderDetail> UpdateStatusAsync(int orderId, OrderStatus orderStatus);
     }
 
     public class OrderDetailService : IOrderDetailService
@@ -47,6 +50,19 @@ namespace GraphQLPizzaOrder.Core.Services
             await this.context.SaveChangesAsync();
             //return orderDetail;
             return newOrderDetail.Entity;
+
+        }
+
+        public async Task<OrderDetail> UpdateStatusAsync(int orderId, OrderStatus orderStatus)
+        {
+            var orderDetail = await this.context.OrderDetails.FindAsync(orderId);
+            if(orderDetail != null)
+            {
+                orderDetail.OrderStatus = orderStatus;
+                await this.context.SaveChangesAsync();
+            }
+
+            return orderDetail;
 
         }
     }

@@ -16,6 +16,8 @@ namespace GraphQLPizzaOrder.Core.Services
         Task<IEnumerable<PizzaDetail>> GetAllPizzaDetailsForOrderAsync(int orderId);
 
         Task<IEnumerable<PizzaDetail>> CreateBulkAsync(IEnumerable<PizzaDetail> pizzaDetails, int orderId);
+
+        Task<int> DeletePizzaDetailsAsync(int pizzaDetailsId);
     }
 
     public class PizzaDetailService : IPizzaDetailService
@@ -42,6 +44,17 @@ namespace GraphQLPizzaOrder.Core.Services
             await this.context.PizzaDetails.AddRangeAsync(pizzaDetails);
             await this.context.SaveChangesAsync();
             return this.context.PizzaDetails.Where(p => p.OrderDetailId == orderId);
+        }
+
+        public async Task<int> DeletePizzaDetailsAsync(int pizzaDetailsId)
+        {
+            var pizzaDetails = await this.context.PizzaDetails.FindAsync(pizzaDetailsId);
+            if (pizzaDetails == null) return 0;
+
+            int orderId = pizzaDetails.OrderDetailId;
+            this.context.Remove(pizzaDetails);
+            await this.context.SaveChangesAsync();
+            return pizzaDetails.OrderDetailId;
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using GraphQL;
+using GraphQL.Authorization;
 using GraphQL.Types;
 using GraphQL.Types.Relay.DataObjects;
+using GraphQLPizzaOrder.Core.Constants;
 using GraphQLPizzaOrder.Core.Enums;
 using GraphQLPizzaOrder.Core.Helpers;
 using GraphQLPizzaOrder.Core.Paging;
@@ -21,13 +23,15 @@ namespace GraphQLPizzaOrder.GraphQLModels.Queries
         private readonly IOrderDetailService service;
         private readonly IPizzaDetailService pizzaDetailService;
 
+   
         public PizzaOrderQuery(IOrderDetailService orderDetailService, IPizzaDetailService pizzaDetailService)
         {
             this.service = orderDetailService;
             this.pizzaDetailService = pizzaDetailService;
             Name = nameof(PizzaOrderQuery);
             FieldAsync<ListGraphType<OrderDetailType>>(name: "newOrders", 
-                resolve: async context => await orderDetailService.GetAllNewOrdersAsync());
+                resolve: async context => await orderDetailService.GetAllNewOrdersAsync())
+                .AuthorizeWith(AuthPolicy.RestaurantPolicy);
 
             FieldAsync<PizzaDetailType>(name: "pizzaDetails",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>>() { Name = "id" }),

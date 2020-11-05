@@ -46,12 +46,15 @@ namespace GraphQLPizzaOrder.API
 
             var migrationAssembly = typeof(PizzaOrderContext).GetTypeInfo().Assembly.GetName().Name;
 
+            #region AddDbContextPool
+            // not working because of we need a singleton
             //services.AddDbContextPool<PizzaOrderContext>(options =>
             //{
             //    options.UseSqlServer(Configuration.GetConnectionString(nameof(PizzaOrderContext)), sql =>
             //        sql.MigrationsAssembly(migrationAssembly));
 
             //});
+            #endregion
 
             services.AddDbContext<PizzaOrderContext>(options =>
             {
@@ -62,7 +65,11 @@ namespace GraphQLPizzaOrder.API
             services.AddSingleton<IDocumentExecuter, EFDocumentExecuter>(); // Workaround for parallel queries in EF
             services.AddSingleton<IDocumentWriter, GraphQL.SystemTextJson.DocumentWriter>();
 
+            services.AddApplicationIdentity();
+            services.AddApplicationJWT(Configuration);
+            services.AddApplicationGraphQLAuthorization();
             services.AddCustomServices();
+           
             services.AddGraphQLServices();
             services.AddGraphQLTypes();
         }
@@ -80,6 +87,7 @@ namespace GraphQLPizzaOrder.API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

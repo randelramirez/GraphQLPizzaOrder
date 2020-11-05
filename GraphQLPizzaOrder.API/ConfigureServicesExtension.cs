@@ -33,6 +33,7 @@ namespace GraphQLPizzaOrder.API
     {
         public static void AddApplicationIdentity(this IServiceCollection services)
         {
+
             // Added Identity
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<PizzaOrderContext>()
@@ -105,11 +106,11 @@ namespace GraphQLPizzaOrder.API
                     Console.WriteLine($"Error: {context.OriginalException.Message}");
                 };
             })
-            .AddSystemTextJson(deserializerSettings => {  }, serializerSettings => { })
+            .AddSystemTextJson(deserializerSettings => { }, serializerSettings => { })
             .AddUserContextBuilder(httpContext => new GraphQLUserContext { User = httpContext.User })
             .AddWebSockets()  // for GraphQL subscription
             .AddDataLoader()
-            .AddGraphTypes(typeof(PizzaOrderSchema),ServiceLifetime.Singleton);
+            .AddGraphTypes(typeof(PizzaOrderSchema), ServiceLifetime.Singleton);
         }
 
         public static void AddGraphQLTypes(this IServiceCollection services)
@@ -148,7 +149,7 @@ namespace GraphQLPizzaOrder.API
             {
                 var authSettings = new AuthorizationSettings();
 
-                authSettings.AddPolicy(AuthPolicy.CustomerPolicy, 
+                authSettings.AddPolicy(AuthPolicy.CustomerPolicy,
                     policy => policy.RequireClaim(ClaimTypes.Role, Roles.Customer));
 
                 authSettings.AddPolicy(AuthPolicy.RestaurantPolicy,

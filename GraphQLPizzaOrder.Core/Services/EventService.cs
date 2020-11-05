@@ -25,6 +25,7 @@ namespace GraphQLPizzaOrder.Core.Services
 
         private readonly ISubject<EventDataModel> onCreateSubject = new ReplaySubject<EventDataModel>(1);
 
+        // On next publishes the message/data to all subsribers
         public void CreateOrderEvent(EventDataModel orderEvent) => onCreateSubject.OnNext(orderEvent);
 
         public IObservable<EventDataModel> OnCreateObservable() => onCreateSubject.AsObservable();

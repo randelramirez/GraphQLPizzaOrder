@@ -29,9 +29,9 @@ namespace GraphQLPizzaOrder.GraphQLModels.Queries
             this.service = orderDetailService;
             this.pizzaDetailService = pizzaDetailService;
             Name = nameof(PizzaOrderQuery);
-            FieldAsync<ListGraphType<OrderDetailType>>(name: "newOrders", 
-                resolve: async context => await orderDetailService.GetAllNewOrdersAsync())
-                .AuthorizeWith(AuthPolicy.RestaurantPolicy);
+            FieldAsync<ListGraphType<OrderDetailType>>(name: "newOrders",
+                resolve: async context => await orderDetailService.GetAllNewOrdersAsync());
+               
 
             FieldAsync<PizzaDetailType>(name: "pizzaDetails",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>>() { Name = "id" }),
@@ -39,7 +39,7 @@ namespace GraphQLPizzaOrder.GraphQLModels.Queries
 
             FieldAsync<OrderDetailType>(name: "orderDetails",
               arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>>() { Name = "id" }),
-             resolve: async context => await orderDetailService.GetOrderDetailAsync(context.GetArgument<int>("id")));
+             resolve: async context => await orderDetailService.GetOrderDetailAsync(context.GetArgument<int>("id"))).AuthorizeWith(AuthPolicy.RestaurantPolicy); 
 
             Connection<OrderDetailType>()
                    .Name("completedOrders")

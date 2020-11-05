@@ -28,7 +28,7 @@ namespace GraphQLPizzaOrder.GraphQLModels.Types
             Name = nameof(OrderDetailType);
             Field(o => o.Id);
             Field(o => o.AddressLine1);
-            Field(o => o.AddressLine2);
+            Field(o => o.AddressLine2,true);
             Field(o => o.MobileNo);
             Field(o => o.Amount);
             Field(o => o.Date);

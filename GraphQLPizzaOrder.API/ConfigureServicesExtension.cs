@@ -6,6 +6,7 @@ using GraphQLPizzaOrder.GraphQLModels.InputTypes;
 using GraphQLPizzaOrder.GraphQLModels.Mutations;
 using GraphQLPizzaOrder.GraphQLModels.Queries;
 using GraphQLPizzaOrder.GraphQLModels.Schema;
+using GraphQLPizzaOrder.GraphQLModels.Subscriptions;
 using GraphQLPizzaOrder.GraphQLModels.Types;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +22,7 @@ namespace GraphQLPizzaOrder.API
         {
             services.AddSingleton<IPizzaDetailService, PizzaDetailService>();
             services.AddSingleton<IOrderDetailService, OrderDetailService>();
+            services.AddSingleton<IEventService, EventService>();
         }
 
         public static void AddGraphQLServices(this IServiceCollection services)
@@ -42,14 +44,26 @@ namespace GraphQLPizzaOrder.API
 
         public static void AddGraphQLTypes(this IServiceCollection services)
         {
+            // Enum
             services.AddSingleton<OrderStatusEnumType>();
             services.AddSingleton<ToppingsEnumType>();
+            services.AddSingleton<CompletedOrdersSortingFieldsEnumType>();
+            services.AddSingleton<SortingDirectionEnumType>();
+
+            // Model
+            services.AddSingleton<EventDataType>();
+
+            // InputType
             services.AddSingleton<OrderDetailInputType>();
             services.AddSingleton<PizzaDetailInputType>();
+            services.AddSingleton<CompletedOrderOrderByInputType>();
+
+            // ObjectGraph Type
             services.AddSingleton<OrderDetailType>();
             services.AddSingleton<PizzaDetailType>();
             services.AddSingleton<PizzaOrderQuery>();
             services.AddSingleton<PizzaOrderMutation>();
+            services.AddSingleton<PizzaOrderSubscription>();
             services.AddSingleton<PizzaOrderSchema>();
         }
     }

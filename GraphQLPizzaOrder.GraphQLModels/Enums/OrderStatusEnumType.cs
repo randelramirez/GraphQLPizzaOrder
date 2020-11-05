@@ -7,6 +7,10 @@ using System.Text;
 
 namespace GraphQLPizzaOrder.GraphQLModels.Enums
 {
+
+    // Another way of defining an Enum
+    // We do not specify the base type, we're not using the generic EnumerationGraphType<T>
+    // We use AddValue to define enum values
     public class OrderStatusEnumType : EnumerationGraphType
     {
         public OrderStatusEnumType()
